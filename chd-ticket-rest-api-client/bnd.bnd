@@ -1,0 +1,6 @@
+Bundle-Name: chd-ticket-rest-api-client
+Bundle-SymbolicName: es.altia.chd.form.ticket.restapi.client
+Bundle-Version: 1.0.0
+Export-Package: \
+	es.altia.chd.form.ticket.restapi.client.service,\
+	es.altia.chd.form.ticket.restapi.dto
