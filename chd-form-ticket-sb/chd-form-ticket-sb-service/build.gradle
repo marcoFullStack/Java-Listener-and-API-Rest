@@ -1,0 +1,12 @@
+dependencies {
+	api project(":modules:chd-form-ticket-sb:chd-form-ticket-sb-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+}
+
+buildService {
+	apiDir = "../chd-form-ticket-sb-api/src/main/java"
+	testDir = "../chd-form-ticket-sb-test/src/testIntegration/java"
+}
+
+group = "es.altia.chd.form.ticket.sb"

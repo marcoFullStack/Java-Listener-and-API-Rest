@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="es.altia.chd.form.ticket.sb.model.Ticket">
+		<field name="id" type="long" />
+		<field name="formInstanceRecordId" type="long" />
+		<field name="formInstanceId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="ticketId" type="String" />
+		<field name="token" type="String" />
+		<field name="email" type="String" />
+	</model>
+</model-hints>

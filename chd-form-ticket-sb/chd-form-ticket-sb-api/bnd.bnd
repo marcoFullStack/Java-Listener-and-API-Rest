@@ -1,0 +1,10 @@
+Bundle-Name: chd-form-ticket-sb-api
+Bundle-SymbolicName: es.altia.chd.form.ticket.sb.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	es.altia.chd.form.ticket.sb.exception,\
+	es.altia.chd.form.ticket.sb.model,\
+	es.altia.chd.form.ticket.sb.service,\
+	es.altia.chd.form.ticket.sb.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../chd-form-ticket-sb-service/service.xml

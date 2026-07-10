@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.4.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_4_0.dtd">
+
+<service-builder package-path="es.altia.chd.form.ticket.sb">
+	<namespace>CHDTICKET</namespace>
+
+	<entity name="Ticket" local-service="true" remote-service="false" uuid="false">
+
+		<column name="id" primary="true" type="long" />
+
+		<column name="formInstanceRecordId" type="long" />
+		<column name="formInstanceId" type="long" />
+		<column name="groupId" type="long" />
+		<column name="createDate" type="Date" />
+
+		<column name="ticketId" type="String" />
+		<column name="token" type="String" />
+		<column name="email" type="String" />
+
+		<finder name="OdooAuth" return-type="Ticket">
+			<finder-column name="ticketId" />
+			<finder-column name="token" />
+		</finder>
+		<finder name="FormRecordId" return-type="Ticket">
+			<finder-column name="formInstanceRecordId" />
+		</finder>
+
+	</entity>
+</service-builder>

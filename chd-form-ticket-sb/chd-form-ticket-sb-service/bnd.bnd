@@ -1,0 +1,6 @@
+Bundle-Name: chd-form-ticket-sb-service
+Bundle-SymbolicName: es.altia.chd.form.ticket.sb.service
+Bundle-Version: 1.0.0
+Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Service: true
+-dsannotations-options: inherit
