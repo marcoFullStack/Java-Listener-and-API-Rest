@@ -1,0 +1,399 @@
+// ===== CONFIGURACIÓN DE COLORES POR ESTADO =====
+.ticket-portlet{
+
+    $stateColors: (
+      "nuevo": #0b5fff,
+      "tramite": #ffc107,
+      "en tramite": #ffc107,
+      "en trámite": #ffc107,
+      "respondido": #17a2b8,
+      "pendiente": #dc3545,
+      "pendiente contestar": #dc3545,
+      "hecho": #28a745,
+      "resuelto": #28a745,
+      "rechazado": #6c757d,
+      "cancelado": #6c757d
+    );
+
+    // ===== ESTILOS GENERALES (del documento original) =====
+
+    .ticket-search-wrapper {
+      position: relative;
+      overflow: hidden;
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+      isolation: isolate;
+      max-width: 500px;
+      margin: 2rem auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #dde1e9;
+      transition: all 0.3s ease;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #0b5fff, #7c3aed);
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="email"] {
+        width: 100%;
+        border: 2px solid #e7e7ed;
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 15px;
+        transition: border-color 0.2s;
+        display: block;
+
+        &:focus {
+          border-color: #0b5fff;
+          outline: none;
+        }
+      }
+
+      button[type="submit"] {
+        width: 100%;
+        background-color: #0b5fff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: #004ad7;
+          transform: translateY(-1px);
+        }
+      }
+    }
+
+    .result-box {
+      margin-top: 20px;
+      background-color: #f1f8ff;
+      border-left: 5px solid #0b5fff;
+      border-radius: 4px 8px 8px 4px;
+      padding: 15px;
+      animation: fadeIn 0.5s ease-out;
+
+      .result-header {
+        color: #0b5fff;
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: block;
+      }
+    }
+
+    .ticket-description-list {
+      ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding-left: 10px;
+      }
+
+      li {
+        margin-bottom: 8px;
+        color: #333;
+      }
+    }
+
+    .tittle {
+      text-align: center;
+      margin-bottom: 36px;
+      padding-top: 24px;
+    }
+
+    .locker {
+      width: 56px;
+      height: 56px;
+      background-color: #0066ff;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin: 0 auto 16px;
+      line-height: 1;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #999999;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      margin-bottom: 5px;
+
+      &::placeholder {
+        color: #999999;
+        opacity: 1;
+      }
+
+      &::-ms-reveal,
+      &::-ms-clear {
+        display: none;
+      }
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      padding: 0;
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+
+    .ticket-search-wrapper .form-control-password-toggler,
+    .ticket-search-wrapper .input-group-text .lexicon-icon-view {
+      display: none !important;
+    }
+
+    .info-icon {
+      width: 30px;
+      height: 15px;
+      font-size: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #3b82f6;
+      border-radius: 4px;
+      color: white;
+      font-family: "Georgia", serif;
+      font-weight: bold;
+      font-style: italic;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      cursor: default;
+      user-select: none;
+      margin-top: 4px;
+    }
+
+    .addBox {
+      display: flex;
+      max-width: 500px;
+      margin: 2rem auto;
+      background-color: #1a6ef517;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid #1a6ef526;
+      transition: all 0.3s ease;
+      color: #1a6ef5;
+    }
+
+    // ===== TICKET DETAIL WRAPPER - LÓGICA DE ESTADOS =====
+
+    .ticket-detail-wrapper {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+      h2 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #007bff;
+        display: inline-block;
+        padding-bottom: 5px;
+      }
+
+      .card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        padding: 25px;
+        border: 1px solid #e1e1e1;
+
+        p {
+          margin-bottom: 12px;
+          font-size: 15px;
+          color: #555;
+
+          strong {
+            color: #222;
+            width: 100px;
+            display: inline-block;
+          }
+        }
+
+        hr {
+          border: 0;
+          border-top: 1px solid #eee;
+          margin: 20px 0;
+        }
+
+        .description-content {
+          background-color: #f8f9fa;
+          padding: 15px;
+          border-radius: 8px;
+          border-left: 4px solid #007bff;
+          color: #444;
+          line-height: 1.6;
+          font-size: 14px;
+        }
+      }
+
+      .btn-secondary {
+        margin-top: 20px;
+        background-color: #6c757d;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background 0.3s;
+
+        &:hover {
+          background-color: #5a6268;
+        }
+      }
+    }
+
+    // ===== SELECTORES DE ATRIBUTOS POR ESTADO =====
+
+    [data-ticket-state="nuevo"],
+    [data-ticket-state="NEW"] {
+      --state-color: #0b5fff;
+      --state-bg: #e7f1ff;
+      --state-border: #0b5fff;
+
+      .state-badge {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: 10rem;
+        background-color: #0b5fff;
+        color: white;
+      }
+
+      .state-btn {
+        background-color: #0b5fff;
+        border-color: #0b5fff;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        transition: all 0.2s ease;
+
+        &:hover:not(:disabled) {
+          background-color: #004ad7;
+          border-color: #004ad7;
+        }
+
+        &:disabled {
+          background-color: #0b5fff;
+          opacity: 0.65;
+          cursor: not-allowed;
+        }
+      }
+
+      .state-color {
+        color: #0b5fff;
+      }
+
+      .description-content {
+        border-left: 5px solid #0b5fff;
+        padding-left: 20px;
+        border-radius: 4px;
+      }
+    }
+
+    @each $state, $color in $stateColors {
+
+      [data-ticket-state="#{$state}"],
+      [data-ticket-state="#{to-upper-case($state)}"] {
+
+        --state-color: #{$color};
+        --state-bg: #{rgba($color, 0.1)};
+        --state-border: #{$color};
+
+        .state-badge {
+          display: inline-block;
+          padding: 0.5rem 1rem;
+          font-size: 0.75rem;
+          font-weight: 700;
+          border-radius: 10rem;
+          background-color: $color;
+          color: white;
+        }
+
+        .state-btn {
+          background-color: $color;
+          border-color: $color;
+          color: white;
+          padding: 0.5rem 1rem;
+          border-radius: 0.25rem;
+          transition: all 0.2s ease;
+
+          &:hover:not(:disabled) {
+            background-color: darken($color, 10%);
+            border-color: darken($color, 12%);
+          }
+
+          &:disabled {
+            background-color: $color;
+            opacity: 0.65;
+            cursor: not-allowed;
+          }
+        }
+
+        .state-color {
+          color: $color;
+        }
+
+        .description-content {
+          border-left: 5px solid $color;
+          padding-left: 20px;
+          border-radius: 4px;
+        }
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+}
+
+

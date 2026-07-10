@@ -1,0 +1,7 @@
+Bundle-Name: chd-gestion-ticket-portlet
+Bundle-SymbolicName: es.altia.chd.ticket.gestion
+Bundle-Version: 1.0.0
+Export-Package: es.altia.chd.ticket.gestion.constants
+Provide-Capability:\
+	liferay.language.resources;\
+		resource.bundle.base.name="content.Language"
