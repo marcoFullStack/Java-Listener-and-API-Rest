@@ -1,0 +1,4 @@
+Bundle-Name: chd-form-ticket-dataProvider
+Bundle-SymbolicName: es.altia.chd.form.ticket
+Bundle-Version: 1.0.0
+Export-Package: es.altia.chd.form.ticket.api*
